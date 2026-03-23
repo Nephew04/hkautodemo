@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HK Autoklinik – Gelsenkirchen | Lackierung · Smart Repair · Unfallschäden</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════════════
+   ROOT & RESET
+════════════════════════════════════════════════════ */
+:root {
+  --red:#E8161B; --red-dark:#b50f13;
+  --black:#0a0a0a; --dark:#111111; --dark2:#1a1a1a; --dark3:#222222;
+  --grey:#777; --white:#ffffff;
+  --fd:'Bebas Neue',sans-serif;
+  --fb:'Barlow',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--fb);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.5}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--red)}
+a{text-decoration:none;color:inherit}
+
+/* ════════════════════════════════════════════════════
+   NAV
+════════════════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 52px;height:70px;
+  background:rgba(10,10,10,.88);backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(232,22,27,.18);
+  transition:all .3s;
+}
+.logo{font-family:var(--fd);font-size:1.55rem;letter-spacing:3px}
+.logo em{color:var(--red);font-style:normal}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{font-weight:700;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--grey);position:relative;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;
+  background:var(--red);transition:width .3s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--red)!important;color:#fff!important;padding:9px 22px;border-radius:2px}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--red-dark)!important;color:#fff!important}
+
+/* ════════════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════════════ */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 64px 80px;position:relative;z-index:2;
+}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;
+  font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--red);margin-bottom:28px}
+.hero-tag::before{content:'';display:block;width:28px;height:2px;background:var(--red)}
+h1.hero-h1{font-family:var(--fd);font-size:clamp(3.8rem,6.5vw,9rem);
+  line-height:.9;letter-spacing:2px;margin-bottom:26px}
+h1.hero-h1 em{color:var(--red);font-style:normal;display:block}
+.hero-sub{font-size:.98rem;font-weight:300;color:#888;line-height:1.75;
+  max-width:400px;margin-bottom:44px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 34px;
+  font-family:var(--fb);font-weight:700;font-size:.82rem;letter-spacing:2px;
+  text-transform:uppercase;border-radius:2px;border:none;cursor:pointer;
+  transition:all .22s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-2px);
+  box-shadow:0 10px 36px rgba(232,22,27,.38)}
+.btn-outline{border:1px solid rgba(255,255,255,.18);color:#fff;background:none}
+.btn-outline:hover{border-color:var(--red);background:rgba(232,22,27,.07);transform:translateY(-2px)}
+.hero-rating{display:flex;align-items:center;gap:12px;
+  margin-top:44px;padding-top:38px;border-top:1px solid rgba(255,255,255,.07)}
+.stars{color:#FFD700;letter-spacing:2px;font-size:1.05rem}
+.rating-text{font-size:.78rem;color:#666}
+.rating-text strong{color:#fff}
+.hero-right{position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(108deg,var(--black) 0%,transparent 38%);z-index:1}
+.hero-car-bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse at 62% 50%,rgba(232,22,27,.11) 0%,transparent 62%),#0d0d0d;
+  z-index:0}
+.hero-car-visual{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1}
+.car-wrap{width:88%;filter:drop-shadow(0 24px 64px rgba(232,22,27,.28));
+  animation:float 4.2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.hero-line{position:absolute;bottom:0;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--red),transparent)}
+
+/* ════════════════════════════════════════════════════
+   STATS BAR
+════════════════════════════════════════════════════ */
+.stats-bar{
+  background:var(--dark2);
+  border-top:1px solid rgba(255,255,255,.045);
+  border-bottom:1px solid rgba(255,255,255,.045);
+  padding:34px 0;
+}
+.stats-inner{
+  max-width:1200px;margin:0 auto;padding:0 52px;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat{text-align:center;padding:0 28px;border-right:1px solid rgba(255,255,255,.055)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:var(--fd);font-size:3.4rem;color:var(--red);line-height:1;letter-spacing:2px}
+.stat-l{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--grey);margin-top:5px}
+
+/* ════════════════════════════════════════════════════
+   SECTIONS BASE
+════════════════════════════════════════════════════ */
+section{padding:116px 0}
+.c{max-width:1200px;margin:0 auto;padding:0 52px}
+.stag{display:inline-flex;align-items:center;gap:9px;
+  font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--red);margin-bottom:18px}
+.stag::before{content:'';display:block;width:22px;height:2px;background:var(--red)}
+.stitle{font-family:var(--fd);font-size:clamp(2.4rem,3.8vw,5rem);
+  letter-spacing:2px;line-height:.92;margin-bottom:22px}
+.accent{color:var(--red)}
+
+/* ════════════════════════════════════════════════════
+   ÜBER UNS
+════════════════════════════════════════════════════ */
+#ueber-uns{background:var(--dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text p{font-size:1rem;font-weight:300;color:#999;line-height:1.85;margin-bottom:22px}
+.about-text strong{color:#fff;font-weight:600}
+.about-visual{position:relative;height:460px}
+.av-main{position:absolute;inset:0 44px 44px 0;
+  background:linear-gradient(138deg,var(--dark2),var(--dark3));
+  border:1px solid rgba(255,255,255,.055);border-radius:4px;
+  padding:32px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.av-main::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+.av-big{font-family:var(--fd);font-size:7rem;color:rgba(255,255,255,.035);line-height:1;margin-bottom:20px}
+.av-main .lbl{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:7px}
+.av-main h3{font-size:1.35rem;font-weight:600;line-height:1.35}
+.av-float{position:absolute;bottom:0;right:0;width:190px;
+  background:var(--red);padding:22px;border-radius:4px}
+.av-float .big{font-family:var(--fd);font-size:3.2rem;line-height:1}
+.av-float small{font-size:.72rem;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:rgba(255,255,255,.72)}
+
+/* ════════════════════════════════════════════════════
+   LEISTUNGEN
+════════════════════════════════════════════════════ */
+#leistungen{background:var(--black)}
+.lhdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px}
+.lhdr p{max-width:340px;color:var(--grey);font-weight:300;line-height:1.75;font-size:.92rem}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.svc-card{background:var(--dark);padding:46px 38px;position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,.038);transition:background .3s}
+.svc-card:hover{background:var(--dark2)}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;
+  background:var(--red);transition:width .42s cubic-bezier(.4,0,.2,1)}
+.svc-card:hover::after{width:100%}
+.svc-icon{width:54px;height:54px;background:rgba(232,22,27,.09);
+  border:1px solid rgba(232,22,27,.22);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:30px;font-size:1.5rem;transition:background .3s}
+.svc-card:hover .svc-icon{background:rgba(232,22,27,.18)}
+.svc-n{position:absolute;top:38px;right:36px;font-family:var(--fd);
+  font-size:5rem;color:rgba(255,255,255,.038);line-height:1;transition:color .3s}
+.svc-card:hover .svc-n{color:rgba(232,22,27,.07)}
+.svc-card h3{font-family:var(--fd);font-size:1.9rem;letter-spacing:2px;margin-bottom:14px}
+.svc-card p{font-size:.88rem;color:var(--grey);line-height:1.72;font-weight:300}
+
+/* ════════════════════════════════════════════════════
+   ▓▓ TERMIN-BUCHUNG ▓▓
+════════════════════════════════════════════════════ */
+#termin{background:var(--black);position:relative;overflow:hidden}
+#termin::before{
+  content:'BUCHEN';font-family:var(--fd);font-size:22vw;
+  color:rgba(255,255,255,.015);white-space:nowrap;
+  position:absolute;top:50%;left:-20px;transform:translateY(-50%);
+  pointer-events:none;
+}
+.booking-layout{display:grid;grid-template-columns:420px 1fr;gap:44px;align-items:start;position:relative;z-index:1}
+
+/* ── Kalender ── */
+.cal-box{background:var(--dark);border:1px solid rgba(255,255,255,.07);border-radius:6px;overflow:hidden;position:sticky;top:90px}
+.cal-hdr{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid rgba(255,255,255,.055)}
+.cal-month{font-family:var(--fd);font-size:1.55rem;letter-spacing:3px}
+.cal-nav-btn{background:none;border:1px solid rgba(255,255,255,.1);color:#fff;
+  width:34px;height:34px;border-radius:2px;cursor:pointer;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;transition:all .2s}
+.cal-nav-btn:hover{background:var(--red);border-color:var(--red)}
+.cal-nav-btn:disabled{opacity:.2;cursor:not-allowed;pointer-events:none}
+.cal-wdays{display:grid;grid-template-columns:repeat(7,1fr);padding:10px 14px 0}
+.cal-wd{text-align:center;font-size:.62rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--grey);padding:7px 0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;padding:6px 14px 18px}
+.cd{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  border-radius:3px;font-size:.82rem;font-weight:600;
+  border:1px solid transparent;transition:all .18s;position:relative;
+}
+.cd.empty,.cd.past{color:rgba(255,255,255,.11);cursor:default}
+.cd.closed{color:rgba(255,255,255,.13);cursor:not-allowed;text-decoration:line-through}
+.cd.full{color:rgba(255,80,80,.42);cursor:not-allowed}
+.cd.full::after,.cd.open::after,.cd.few::after{
+  content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;
+}
+.cd.full::after{background:rgba(255,80,80,.45)}
+.cd.few{color:#ffb700;cursor:pointer}
+.cd.few::after{background:#ffb700}
+.cd.open{color:#fff;cursor:pointer}
+.cd.open::after{background:#00d46a}
+.cd.open:hover,.cd.few:hover{background:rgba(232,22,27,.14);border-color:rgba(232,22,27,.32)}
+.cd.sel{background:var(--red)!important;border-color:var(--red)!important;color:#fff!important}
+.cd.sel::after{display:none}
+.cal-legend{display:flex;gap:18px;padding:14px 26px;border-top:1px solid rgba(255,255,255,.048);flex-wrap:wrap}
+.leg{display:flex;align-items:center;gap:6px;font-size:.68rem;color:var(--grey)}
+.leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ── Buchungs-Steps ── */
+.bk-steps{display:flex;flex-direction:column;gap:14px}
+.bk-step{background:var(--dark);border:1px solid rgba(255,255,255,.065);border-radius:6px;overflow:hidden;transition:border-color .28s}
+.bk-step.active{border-color:rgba(232,22,27,.38)}
+.bk-step.done{border-color:rgba(0,212,106,.18)}
+.step-hdr{display:flex;align-items:center;gap:14px;padding:18px 24px;cursor:pointer;user-select:none}
+.step-circle{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-size:1rem;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  color:var(--grey);transition:all .28s;
+}
+.bk-step.active .step-circle{background:var(--red);border-color:var(--red);color:#fff}
+.bk-step.done .step-circle{background:rgba(0,212,106,.12);border-color:rgba(0,212,106,.3);color:#00d46a}
+.step-ttl{font-family:var(--fd);font-size:1.2rem;letter-spacing:2px;color:var(--grey);transition:color .28s}
+.bk-step.active .step-ttl,.bk-step.done .step-ttl{color:#fff}
+.step-smry{margin-left:auto;font-size:.75rem;font-weight:700;color:var(--red);white-space:nowrap}
+.step-body{padding:0 24px 24px;display:none}
+.bk-step.active .step-body{display:block}
+
+/* Services im Step */
+.svc-pick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.svc-opt{
+  background:var(--dark2);border:1px solid rgba(255,255,255,.055);
+  padding:16px;border-radius:4px;cursor:pointer;transition:all .2s;
+}
+.svc-opt:hover{border-color:rgba(232,22,27,.32)}
+.svc-opt.sel{border-color:var(--red);background:rgba(232,22,27,.06)}
+.svc-opt .nm{font-weight:700;font-size:.86rem;margin-bottom:4px}
+.svc-opt .dc{font-size:.74rem;color:var(--grey);line-height:1.5;margin-bottom:6px}
+.svc-opt .dr{font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red)}
+
+/* Slots */
+.date-lbl{font-family:var(--fd);font-size:1.35rem;letter-spacing:2px;margin-bottom:14px}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:14px}
+.slot{
+  padding:11px 6px;border-radius:3px;font-size:.78rem;font-weight:700;
+  letter-spacing:.8px;text-align:center;cursor:pointer;transition:all .18s;
+  border:1px solid rgba(255,255,255,.08);background:var(--dark2);color:#fff;
+}
+.slot:hover{border-color:var(--red);background:rgba(232,22,27,.08)}
+.slot.sel{background:var(--red);border-color:var(--red)}
+.slot.busy{opacity:.28;cursor:not-allowed;text-decoration:line-through;pointer-events:none}
+.slot small{display:block;font-weight:400;opacity:.55;font-size:.68rem;margin-top:1px}
+.no-day{color:var(--grey);font-size:.88rem;padding:14px 0}
+
+/* Formularfelder */
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.f-field{margin-bottom:12px}
+.f-lbl{display:block;font-size:.65rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--grey);margin-bottom:6px}
+.f-inp,.f-ta{
+  width:100%;background:var(--black);border:1px solid rgba(255,255,255,.075);
+  color:#fff;padding:12px 14px;border-radius:2px;font-family:var(--fb);
+  font-size:.88rem;outline:none;transition:border-color .2s;
+}
+.f-inp:focus,.f-ta:focus{border-color:var(--red)}
+.f-ta{resize:vertical;min-height:85px}
+.sep{font-family:var(--fd);font-size:1rem;letter-spacing:2px;
+  color:rgba(255,255,255,.2);margin:8px 0 16px;display:flex;align-items:center;gap:10px}
+.sep::before,.sep::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06)}
+.bk-btn{
+  width:100%;background:var(--red);color:#fff;border:none;
+  padding:14px;font-family:var(--fb);font-weight:700;font-size:.8rem;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;
+  margin-top:8px;transition:all .2s;
+}
+.bk-btn:hover{background:var(--red-dark);transform:translateY(-1px)}
+.bk-btn:disabled{opacity:.38;cursor:not-allowed;transform:none}
+.bk-err{color:#ff6b6b;font-size:.8rem;margin-top:10px;display:none;padding:10px;
+  background:rgba(255,100,100,.07);border:1px solid rgba(255,100,100,.18);border-radius:2px}
+
+/* Erfolg */
+.bk-success{
+  background:linear-gradient(138deg,rgba(0,212,106,.055),rgba(0,212,106,.018));
+  border:1px solid rgba(0,212,106,.2);border-radius:6px;
+  padding:52px 44px;text-align:center;display:none;
+}
+.bk-success .ico{font-size:3.5rem;margin-bottom:18px}
+.bk-success h3{font-family:var(--fd);font-size:2rem;letter-spacing:3px;margin-bottom:12px}
+.bk-success .ref{font-family:var(--fd);font-size:2.5rem;letter-spacing:4px;color:#00d46a;margin:14px 0}
+.bk-success p{font-size:.9rem;color:#999;line-height:1.75}
+.bk-success .reset-btn{
+  display:inline-flex;margin:26px auto 0;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);color:#fff;padding:12px 28px;
+  font-family:var(--fb);font-weight:700;font-size:.78rem;letter-spacing:2px;
+  text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;
+}
+.bk-success .reset-btn:hover{border-color:var(--red);background:rgba(232,22,27,.08)}
+
+/* ════════════════════════════════════════════════════
+   ANKAUF
+════════════════════════════════════════════════════ */
+#ankauf{background:var(--dark);position:relative;overflow:hidden}
+#ankauf::before{content:'ANKAUF';font-family:var(--fd);font-size:18vw;
+  color:rgba(255,255,255,.018);position:absolute;top:50%;left:-10px;
+  transform:translateY(-50%);white-space:nowrap;pointer-events:none}
+.ank-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.ank-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:36px 0}
+.ank-feat{background:var(--dark2);border:1px solid rgba(255,255,255,.055);
+  padding:16px;border-radius:4px;display:flex;align-items:flex-start;gap:10px;
+  font-size:.82rem;color:#999;font-weight:300}
+.ank-feat .icon{color:var(--red);flex-shrink:0}
+.ank-big{font-family:var(--fd);font-size:10rem;color:rgba(232,22,27,.13);line-height:1;margin-bottom:-18px}
+.ank-card{background:linear-gradient(138deg,var(--red),var(--red-dark));
+  padding:44px;border-radius:4px;position:relative;overflow:hidden}
+.ank-card::before{content:'';position:absolute;top:-40px;right:-40px;
+  width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.07)}
+.ank-card h3{font-family:var(--fd);font-size:2.1rem;letter-spacing:2px;margin-bottom:14px}
+.ank-card p{font-size:.88rem;color:rgba(255,255,255,.78);line-height:1.72;margin-bottom:24px}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--red);
+  padding:13px 26px;font-weight:700;font-size:.78rem;letter-spacing:2px;
+  text-transform:uppercase;text-decoration:none;border-radius:2px;border:none;cursor:pointer;
+  transition:transform .2s}
+.btn-white:hover{transform:translateY(-2px)}
+
+/* ════════════════════════════════════════════════════
+   GALERIE
+════════════════════════════════════════════════════ */
+#galerie{background:var(--black)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,210px);gap:3px;margin-top:44px}
+.gal-item{background:var(--dark2);display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;cursor:pointer}
+.gal-item:first-child{grid-column:span 2;grid-row:span 2}
+.gal-item:nth-child(4){grid-column:span 2}
+.gal-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;color:rgba(255,255,255,.09);transition:color .3s;padding:16px;width:100%;height:100%}
+.gal-item:hover .gal-ph{color:rgba(232,22,27,.38)}
+.gal-ico{font-size:2.2rem}
+.gal-lbl{font-family:var(--fd);font-size:1.1rem;letter-spacing:3px;text-align:center}
+.gal-item::after{content:'';position:absolute;inset:0;border:0px solid var(--red);
+  transition:border-width .28s;pointer-events:none}
+.gal-item:hover::after{border-width:2px}
+
+/* ════════════════════════════════════════════════════
+   BEWERTUNGEN
+════════════════════════════════════════════════════ */
+#bewertungen{background:var(--dark)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.rev-card{background:var(--dark2);border:1px solid rgba(255,255,255,.055);
+  padding:34px;border-radius:4px;position:relative;transition:all .28s}
+.rev-card:hover{border-color:rgba(232,22,27,.28);transform:translateY(-4px)}
+.rev-card::before{content:'"';position:absolute;top:22px;right:26px;
+  font-family:var(--fd);font-size:4.5rem;color:rgba(232,22,27,.12);line-height:1}
+.rev-stars{color:#FFD700;font-size:.95rem;margin-bottom:14px}
+.rev-text{font-size:.88rem;color:#999;line-height:1.72;font-weight:300;margin-bottom:22px}
+.rev-author{font-weight:700;font-size:.78rem;letter-spacing:1px}
+.rev-date{font-size:.72rem;color:var(--grey);margin-top:2px}
+
+/* ════════════════════════════════════════════════════
+   PARTNER
+════════════════════════════════════════════════════ */
+#partner{background:var(--black);padding:76px 0}
+.partner-ttl{text-align:center;font-size:.72rem;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--grey);margin-bottom:44px}
+.partner-logos{display:flex;justify-content:center;gap:60px;align-items:center;flex-wrap:wrap}
+.plogo{font-family:var(--fd);font-size:1.45rem;letter-spacing:3px;
+  color:rgba(255,255,255,.13);text-transform:uppercase;transition:color .2s;cursor:default}
+.plogo:hover{color:rgba(255,255,255,.38)}
+
+/* ════════════════════════════════════════════════════
+   KONTAKT
+════════════════════════════════════════════════════ */
+#kontakt{background:var(--dark)}
+.kont-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.kont-items{display:flex;flex-direction:column;gap:14px;margin-top:36px}
+.kont-item{display:flex;gap:16px;align-items:flex-start;padding:20px;
+  background:var(--dark2);border:1px solid rgba(255,255,255,.055);border-radius:4px;
+  text-decoration:none;color:#fff;transition:all .2s}
+.kont-item:hover{border-color:rgba(232,22,27,.28);transform:translateX(4px)}
+.kont-ico{width:42px;height:42px;background:rgba(232,22,27,.09);
+  border:1px solid rgba(232,22,27,.2);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.kont-lbl{font-size:.66rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:3px}
+.kont-val{font-size:.92rem;font-weight:600}
+.oz{margin-top:28px;padding:24px;background:var(--dark2);
+  border:1px solid rgba(255,255,255,.055);border-radius:4px}
+.oz h4{font-size:.66rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--grey);margin-bottom:14px}
+.oz-row{display:flex;justify-content:space-between;font-size:.82rem;
+  padding:7px 0;border-bottom:1px solid rgba(255,255,255,.045);color:#999}
+.oz-row:last-child{border-bottom:none}
+.oz-row .day{color:#fff;font-weight:600}
+.oz-row .open{color:var(--red);font-weight:600}
+.kont-form{background:var(--dark2);border:1px solid rgba(255,255,255,.055);
+  padding:44px;border-radius:4px;position:relative;overflow:hidden}
+.kont-form::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+.kont-form h3{font-family:var(--fd);font-size:1.9rem;letter-spacing:2px;margin-bottom:7px}
+.kont-form .sub{font-size:.82rem;color:var(--grey);margin-bottom:28px}
+.kf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.kf-row{margin-bottom:16px}
+.kf-row label{display:block;font-size:.66rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--grey);margin-bottom:7px}
+.kf-row input,.kf-row textarea{
+  width:100%;background:var(--dark);border:1px solid rgba(255,255,255,.07);
+  color:#fff;padding:13px 15px;border-radius:2px;font-family:var(--fb);
+  font-size:.88rem;outline:none;transition:border-color .2s;
+}
+.kf-row input:focus,.kf-row textarea:focus{border-color:var(--red)}
+.kf-row textarea{resize:vertical;min-height:115px}
+.kf-submit{width:100%;background:var(--red);color:#fff;border:none;
+  padding:15px;font-family:var(--fb);font-weight:700;font-size:.8rem;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;
+  margin-top:6px;transition:all .2s}
+.kf-submit:hover{background:var(--red-dark);transform:translateY(-1px)}
+
+/* ════════════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════════════ */
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);padding:44px 0 24px}
+.ft-inner{max-width:1200px;margin:0 auto;padding:0 52px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:22px}
+.ft-logo{font-family:var(--fd);font-size:1.55rem;letter-spacing:3px}
+.ft-logo em{color:var(--red);font-style:normal}
+.ft-addr{font-size:.78rem;color:var(--grey);margin-top:3px}
+.ft-links{display:flex;gap:26px;flex-wrap:wrap}
+.ft-links a{font-size:.72rem;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--grey);transition:color .2s}
+.ft-links a:hover{color:#fff}
+.ft-copy{font-size:.72rem;color:rgba(255,255,255,.17);text-align:center;
+  margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.038)}
+.float-cta{position:fixed;bottom:30px;right:30px;background:var(--red);color:#fff;
+  width:54px;height:54px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:1.35rem;box-shadow:0 8px 32px rgba(232,22,27,.4);
+  transition:transform .2s,box-shadow .2s;z-index:998;text-decoration:none}
+.float-cta:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(232,22,27,.6)}
+
+/* ════════════════════════════════════════════════════
+   FADE-IN ANIMATION
+════════════════════════════════════════════════════ */
+.fi{opacity:0;transform:translateY(28px);
+  transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.fi.v{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  #hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .about-grid,.ank-grid,.kont-grid,.booking-layout{grid-template-columns:1fr;gap:36px}
+  .svc-grid,.rev-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  nav{padding:0 22px}
+  .nav-links{display:none}
+  .c{padding:0 22px}
+  .hero-left{padding:110px 22px 70px}
+  .svc-pick{grid-template-columns:1fr}
+  .cal-box{position:relative;top:0}
+}
+@media(max-width:600px){
+  .f-grid,.kf-grid,.ank-feats{grid-template-columns:1fr}
+  .slots{grid-template-columns:repeat(3,1fr)}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gal-item:first-child{grid-column:span 2;grid-row:span 1}
+  .gal-item:nth-child(4){grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="nav">
+<a href="#" class="logo">
+  <img src="logo.png" alt="HK Autoklinik Logo" style="height: 80px; width: auto; display: block;">
+</a>
+  <ul class="nav-links">
+    <li><a href="#ueber-uns">Über uns</a></li>
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#termin">Termin</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#ankauf">Ankauf</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Gelsenkirchen · Ihr Vertrauen seit Jahren</div>
+    <h1 class="hero-h1">DIE AUTO<em>KLINIK</em>GELSEN<br>KIRCHEN</h1>
+    <p class="hero-sub">Ihr Spezialist für professionelle Lackierung, Smart Repair und komplette Unfallinstandsetzung. Jetzt Termin online buchen!</p>
+    <div class="hero-btns">
+      <a href="#termin" class="btn btn-red">Termin buchen →</a>
+      <a href="tel:+4920958901361" class="btn btn-outline">📞 0209 - 58 901 361</a>
+    </div>
+    <div class="hero-rating">
+      <div class="stars">★★★★★</div>
+      <div class="rating-text"><strong>5.0 / 5.0</strong> · Top-Google-Bewertung</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-car-bg"></div>
+    <div class="hero-car-visual">
+      <div class="car-wrap">
+        <svg viewBox="0 0 800 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8161B"/><stop offset="100%" stop-color="#7a0d10"/></linearGradient>
+            <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1a3a5c" stop-opacity=".9"/><stop offset="100%" stop-color="#0d1f30" stop-opacity=".95"/></linearGradient>
+            <radialGradient id="wg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#444"/><stop offset="60%" stop-color="#222"/><stop offset="100%" stop-color="#111"/></radialGradient>
+          </defs>
+          <ellipse cx="400" cy="300" rx="275" ry="20" fill="rgba(0,0,0,0.5)"/>
+          <path d="M100 230 Q100 265 130 270 L670 270 Q700 265 700 230 L680 200 L120 200 Z" fill="url(#bg)"/>
+          <path d="M190 200 Q200 140 240 118 L360 95 Q420 82 480 82 L560 82 Q600 90 630 118 L680 200 Z" fill="url(#bg)"/>
+          <path d="M480 87 Q535 88 570 108 L630 172 L570 168 Q530 155 490 148 L470 148 Z" fill="url(#gg)" opacity=".92"/>
+          <path d="M240 120 Q270 100 340 95 L460 90 L455 150 L290 158 Z" fill="url(#gg)" opacity=".85"/>
+          <path d="M252 118 Q275 104 330 100 L400 97 L398 120 L288 124 Z" fill="rgba(255,255,255,0.07)"/>
+          <rect x="458" y="90" width="14" height="60" rx="4" fill="#1a0305" opacity=".8"/>
+          <path d="M210 155 Q320 110 490 108 L620 145 L590 140 Q440 100 280 138 Z" fill="rgba(255,255,255,0.06)"/>
+          <path d="M682 205 Q700 210 704 225 L698 228 Q688 215 678 210 Z" fill="#ffe060" opacity=".9"/>
+          <rect x="114" y="208" width="16" height="36" rx="3" fill="#ff2020" opacity=".9"/>
+          <rect x="390" y="265" width="42" height="22" rx="3" fill="#111" stroke="#E8161B" stroke-width="1.5"/>
+          <text x="411" y="281" font-family="'Bebas Neue',sans-serif" font-size="14" fill="#E8161B" text-anchor="middle" letter-spacing="2">HK</text>
+          <circle cx="220" cy="270" r="52" fill="url(#wg)"/>
+          <circle cx="220" cy="270" r="36" fill="#1a1a1a"/>
+          <circle cx="220" cy="270" r="20" fill="#111" stroke="#444" stroke-width="1.5"/>
+          <g transform="translate(220,270)"><line x1="0" y1="-35" x2="0" y2="-20" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="0" y1="35" x2="0" y2="20" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="-35" y1="0" x2="-20" y2="0" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="35" y1="0" x2="20" y2="0" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="-24.7" y1="-24.7" x2="-14.1" y2="-14.1" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="24.7" y1="24.7" x2="14.1" y2="14.1" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="24.7" y1="-24.7" x2="14.1" y2="-14.1" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="-24.7" y1="24.7" x2="-14.1" y2="14.1" stroke="#555" stroke-width="5" stroke-linecap="round"/></g>
+          <circle cx="220" cy="270" r="6" fill="#E8161B"/>
+          <circle cx="580" cy="270" r="52" fill="url(#wg)"/>
+          <circle cx="580" cy="270" r="36" fill="#1a1a1a"/>
+          <circle cx="580" cy="270" r="20" fill="#111" stroke="#444" stroke-width="1.5"/>
+          <g transform="translate(580,270)"><line x1="0" y1="-35" x2="0" y2="-20" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="0" y1="35" x2="0" y2="20" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="-35" y1="0" x2="-20" y2="0" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="35" y1="0" x2="20" y2="0" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="-24.7" y1="-24.7" x2="-14.1" y2="-14.1" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="24.7" y1="24.7" x2="14.1" y2="14.1" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="24.7" y1="-24.7" x2="14.1" y2="-14.1" stroke="#555" stroke-width="5" stroke-linecap="round"/><line x1="-24.7" y1="24.7" x2="-14.1" y2="14.1" stroke="#555" stroke-width="5" stroke-linecap="round"/></g>
+          <circle cx="580" cy="270" r="6" fill="#E8161B"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════ STATS ═══════════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat fi"><div class="stat-n">5.0</div><div class="stat-l">Google Rating</div></div>
+    <div class="stat fi"><div class="stat-n">100<small style="font-size:2rem">%</small></div><div class="stat-l">Kundenzufriedenheit</div></div>
+    <div class="stat fi"><div class="stat-n">3</div><div class="stat-l">Leistungsbereiche</div></div>
+    <div class="stat fi"><div class="stat-n">5★</div><div class="stat-l">Familienbetrieb</div></div>
+  </div>
+</div>
+
+<!-- ═══════════ ÜBER UNS ═══════════ -->
+<section id="ueber-uns">
+  <div class="c">
+    <div class="about-grid">
+      <div class="fi">
+        <div class="stag">Über uns</div>
+        <h2 class="stitle">FAMILIEN<br>BETRIEB MIT<br>HERZ<span class="accent">.</span></h2>
+        <div class="about-text">
+          <p>Die <strong>HK Autoklinik</strong> ist Ihr Familienbetrieb in Gelsenkirchen‑Bismarck für erstklassige Lackierung, Smart Repair und Unfallinstandsetzung.</p>
+          <p><strong>Familie Kuscu</strong> steht für Qualität, Ehrlichkeit und persönlichen Service – vom kleinen Parkrempler bis zum schweren Unfallschaden.</p>
+          <p>Mit traditionellem Handwerk und modernster Technik sorgen wir dafür, dass Ihr Fahrzeug schnell, fachgerecht und werterhaltend repariert wird.</p>
+        </div>
+        <a href="#termin" class="btn btn-red" style="margin-top:30px;display:inline-flex">Jetzt Termin buchen →</a>
+      </div>
+      <div class="about-visual fi">
+        <div class="av-main">
+          <div class="av-big">HK</div>
+          <div class="lbl">Unsere Mission</div>
+          <h3>Ihr Fahrzeug in Topform – präzise, schnell und werterhaltend</h3>
+        </div>
+        <div class="av-float">
+          <div class="big">5★</div>
+          <small>Google<br>Bewertung</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LEISTUNGEN ═══════════ -->
+<section id="leistungen">
+  <div class="c">
+    <div class="lhdr fi">
+      <div>
+        <div class="stag">Leistungen</div>
+        <h2 class="stitle">ALLES AUS<br>EINER HAND<span class="accent">.</span></h2>
+      </div>
+      <p>Für die Optik und Sicherheit Ihres Fahrzeugs – von der Teillackierung bis zur kompletten Unfallinstandsetzung.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card fi">
+        <div class="svc-icon">🎨</div><div class="svc-n">01</div>
+        <h3>LACKIERUNG</h3>
+        <p>Makellose Lackierarbeiten mit präziser Farbtonbestimmung – von der Teillackierung bis zur Komplettlackierung.</p>
+      </div>
+      <div class="svc-card fi">
+        <div class="svc-icon">🔧</div><div class="svc-n">02</div>
+        <h3>SMART REPAIR</h3>
+        <p>Kleine Kratzer, Dellen und Schrammen punktuell und kostengünstig beseitigen – ohne Teilaustausch.</p>
+      </div>
+      <div class="svc-card fi">
+        <div class="svc-icon">🚗</div><div class="svc-n">03</div>
+        <h3>UNFALLSCHÄDEN</h3>
+        <p>Professionelle Instandsetzung von Unfallschäden mit Karosserie- und Lackarbeiten für volle Sicherheit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TERMIN BUCHEN ═══════════ -->
+<section id="termin">
+  <div class="c">
+    <div class="stag fi">Online Terminbuchung</div>
+    <h2 class="stitle fi">TERMIN ONLINE<br>BUCHEN<span class="accent">.</span></h2>
+    <p class="fi" style="color:var(--grey);font-weight:300;max-width:460px;margin-bottom:52px;font-size:.94rem;line-height:1.78">
+      Wählen Sie Ihre Leistung, Datum und Uhrzeit – Demo zeigt alle Features ohne echte Datenbank.
+    </p>
+
+    <div class="booking-layout fi">
+
+      <!-- ── KALENDER ── -->
+      <div class="cal-box">
+        <div class="cal-hdr">
+          <button class="cal-nav-btn" id="calPrev">&#8592;</button>
+          <div class="cal-month" id="calLabel">–</div>
+          <button class="cal-nav-btn" id="calNext">&#8594;</button>
+        </div>
+        <div class="cal-wdays">
+          <div class="cal-wd">Mo</div><div class="cal-wd">Di</div><div class="cal-wd">Mi</div>
+          <div class="cal-wd">Do</div><div class="cal-wd">Fr</div><div class="cal-wd">Sa</div>
+          <div class="cal-wd">So</div>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <div class="leg"><div class="leg-dot" style="background:#00d46a"></div>Verfügbar</div>
+          <div class="leg"><div class="leg-dot" style="background:#ffb700"></div>Wenige Slots</div>
+          <div class="leg"><div class="leg-dot" style="background:rgba(255,80,80,.45)"></div>Ausgebucht</div>
+          <div class="leg"><div class="leg-dot" style="background:rgba(255,255,255,.15)"></div>Geschlossen</div>
+        </div>
+      </div>
+
+      <!-- ── STEPS ── -->
+      <div>
+        <div class="bk-steps" id="bkSteps">
+
+          <!-- Step 1: Service -->
+          <div class="bk-step active" id="step1">
+            <div class="step-hdr">
+              <div class="step-circle">1</div>
+              <div class="step-ttl">LEISTUNG WÄHLEN</div>
+              <div class="step-smry" id="sSmry"></div>
+            </div>
+            <div class="step-body">
+              <div class="svc-pick" id="svcPick"></div>
+              <button class="bk-btn" id="s1next" disabled onclick="goStep(2)">Weiter → Datum &amp; Zeit wählen</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Datum + Zeit -->
+          <div class="bk-step" id="step2">
+            <div class="step-hdr" onclick="goStep(2)">
+              <div class="step-circle">2</div>
+              <div class="step-ttl">DATUM &amp; UHRZEIT</div>
+              <div class="step-smry" id="dtSmry"></div>
+            </div>
+            <div class="step-body">
+              <div id="dtContent"><p class="no-day">Bitte wählen Sie einen Tag im Kalender links.</p></div>
+              <button class="bk-btn" id="s2next" disabled onclick="goStep(3)" style="margin-top:14px">Weiter → Ihre Daten eingeben</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Kundendaten -->
+          <div class="bk-step" id="step3">
+            <div class="step-hdr" onclick="goStep(3)">
+              <div class="step-circle">3</div>
+              <div class="step-ttl">IHRE DATEN</div>
+            </div>
+            <div class="step-body">
+              <div class="f-grid">
+                <div class="f-field"><label class="f-lbl">Vorname *</label><input class="f-inp" id="fn" placeholder="Max"></div>
+                <div class="f-field"><label class="f-lbl">Nachname *</label><input class="f-inp" id="ln" placeholder="Mustermann"></div>
+              </div>
+              <div class="f-grid">
+                <div class="f-field"><label class="f-lbl">Telefon *</label><input class="f-inp" id="ph" type="tel" placeholder="0209 ..."></div>
+                <div class="f-field"><label class="f-lbl">E-Mail *</label><input class="f-inp" id="em" type="email" placeholder="max@beispiel.de"></div>
+              </div>
+              <div class="sep">Fahrzeug <span style="font-size:.7rem;opacity:.5">(optional)</span></div>
+              <div class="f-grid">
+                <div class="f-field"><label class="f-lbl">Marke</label><input class="f-inp" id="br" placeholder="z.B. BMW"></div>
+                <div class="f-field"><label class="f-lbl">Modell</label><input class="f-inp" id="mo" placeholder="z.B. 3er"></div>
+              </div>
+              <div class="f-field"><label class="f-lbl">Kennzeichen</label><input class="f-inp" id="lp" placeholder="z.B. GE-HK 123"></div>
+              <div class="f-field"><label class="f-lbl">Nachricht</label><textarea class="f-ta" id="msg" placeholder="Beschreiben Sie kurz Ihr Anliegen..."></textarea></div>
+              <button class="bk-btn" id="submitBtn" onclick="doSubmit()">Termin verbindlich anfragen →</button>
+              <div class="bk-err" id="bkErr"></div>
+            </div>
+          </div>
+
+        </div><!-- /bk-steps -->
+
+        <!-- Erfolg -->
+        <div class="bk-success" id="bkSuccess">
+          <div class="ico">✅</div>
+          <h3>TERMIN ANGEFRAGT!</h3>
+          <div class="ref" id="succRef"></div>
+          <p id="succInfo"></p>
+          <button class="reset-btn" onclick="resetAll()">Weiteren Termin buchen</button>
+        </div>
+
+      </div>
+    </div><!-- /booking-layout -->
+  </div>
+</section>
+
+<!-- ═══════════ ANKAUF ═══════════ -->
+<section id="ankauf">
+  <div class="c">
+    <div class="ank-grid">
+      <div class="fi">
+        <div class="stag">Autoankauf</div>
+        <h2 class="stitle">WIR KAUFEN<br>JEDES AUTO<span class="accent">.</span></h2>
+        <p style="color:#999;font-weight:300;line-height:1.75;font-size:.94rem">Unabhängig von Marke, Zustand oder Baujahr – auch stark beschädigte Fahrzeuge kaufen wir an.</p>
+        <div class="ank-feats">
+          <div class="ank-feat"><span class="icon">✓</span>Schnelle &amp; faire Bewertung</div>
+          <div class="ank-feat"><span class="icon">✓</span>Transparentes Angebot</div>
+          <div class="ank-feat"><span class="icon">✓</span>Kostenlose Abholung</div>
+          <div class="ank-feat"><span class="icon">✓</span>Inkl. Abmeldung</div>
+          <div class="ank-feat"><span class="icon">✓</span>Sofortige Auszahlung</div>
+          <div class="ank-feat"><span class="icon">✓</span>Keine versteckten Kosten</div>
+        </div>
+        <a href="#termin" class="btn btn-red">Jetzt anfragen →</a>
+      </div>
+      <div class="fi">
+        <div class="ank-big">€</div>
+        <div class="ank-card">
+          <h3>FAIR &amp; SCHNELL</h3>
+          <p>Fahrzeugbewertung und transparentes Angebot – wir übernehmen die komplette Abwicklung inklusive Abmeldung.</p>
+          <a href="mailto:info@hk-autoklinik.de" class="btn-white">Jetzt schreiben →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALERIE ═══════════ -->
+<section id="galerie">
+  <div class="c">
+    <div class="stag fi">Galerie</div>
+    <h2 class="stitle fi">EINBLICKE IN<br>UNSERE ARBEIT<span class="accent">.</span></h2>
+    <div class="gal-grid">
+      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">🎨</div><div class="gal-lbl">Lackierung Komplett</div></div></div>
+      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">🔧</div><div class="gal-lbl">Smart Repair</div></div></div>
+      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">🚗</div><div class="gal-lbl">Unfall Vorher</div></div></div>
+      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">✨</div><div class="gal-lbl">Unfall Nachher</div></div></div>
+      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">🏆</div><div class="gal-lbl">Karosserie</div></div></div>
+    </div>
+    <p style="color:var(--grey);font-size:.78rem;text-align:center;margin-top:20px;letter-spacing:1px">📸 Folgen Sie uns auf Instagram für aktuelle Einblicke</p>
+  </div>
+</section>
+
+<!-- ═══════════ BEWERTUNGEN ═══════════ -->
+<section id="bewertungen">
+  <div class="c">
+    <div class="stag fi">Bewertungen</div>
+    <h2 class="stitle fi">WAS UNSERE<br>KUNDEN SAGEN<span class="accent">.</span></h2>
+    <div class="rev-grid">
+      <div class="rev-card fi">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">Super Arbeit! Mein Auto sieht aus wie neu. Schnell, professionell und faire Preise. Klare Empfehlung für jeden!</p>
+        <div class="rev-author">M. K.</div><div class="rev-date">Google · 5 Sterne</div>
+      </div>
+      <div class="rev-card fi">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">Unfallschaden komplett behoben, Lackierung perfekt – sehr nettes Team und absolut pünktliche Fertigstellung.</p>
+        <div class="rev-author">S. T.</div><div class="rev-date">Google · 5 Sterne</div>
+      </div>
+      <div class="rev-card fi">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">Ankauf reibungslos – faire Bewertung, schnelle Abwicklung inklusive Abmeldung. Sehr zu empfehlen!</p>
+        <div class="rev-author">A. Y.</div><div class="rev-date">Google · 5 Sterne</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px">
+      <a href="https://search.google.com/local/writereview?placeid=ChIJ838-FyrnuEcRltiNY7X700U" target="_blank" class="btn btn-outline">⭐ Bewerten Sie uns bei Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PARTNER ═══════════ -->
+<section id="partner">
+  <div class="c">
+    <div class="partner-ttl fi">Unsere zufriedenen Stammkunden &amp; Partner</div>
+    <div class="partner-logos fi">
+      <div class="plogo">GERKO</div>
+      <div class="plogo">ULUPINAR</div>
+      <div class="plogo">SATA</div>
+      <div class="plogo">FAHRSCHULE EDI</div>
+      <div class="plogo">AUTOHAUS FERDI</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ KONTAKT ═══════════ -->
+<section id="kontakt">
+  <div class="c">
+    <div class="kont-grid">
+      <div class="fi">
+        <div class="stag">Kontakt</div>
+        <h2 class="stitle">SCHREIBEN<br>SIE UNS<span class="accent">.</span></h2>
+        <div class="kont-items">
+          <a href="tel:+4920958901361" class="kont-item">
+            <div class="kont-ico">📞</div>
+            <div><div class="kont-lbl">Telefon</div><div class="kont-val">0209 - 58 901 361</div></div>
+          </a>
+          <a href="mailto:info@hk-autoklinik.de" class="kont-item">
+            <div class="kont-ico">✉️</div>
+            <div><div class="kont-lbl">E-Mail</div><div class="kont-val">info@hk-autoklinik.de</div></div>
+          </a>
+          <a href="https://share.google/IurLFgdAsKRc0RsQG" target="_blank" class="kont-item">
+            <div class="kont-ico">📍</div>
+            <div><div class="kont-lbl">Adresse</div><div class="kont-val">Hochofenstr. 21, 45888 Gelsenkirchen</div></div>
+          </a>
+        </div>
+        <div class="oz">
+          <h4>Öffnungszeiten</h4>
+          <div class="oz-row"><span class="day">Montag – Freitag</span><span class="open">09:00 – 18:00 Uhr</span></div>
+          <div class="oz-row"><span class="day">Samstag</span><span class="open">09:00 – 14:00 Uhr</span></div>
+          <div class="oz-row"><span class="day">Sonntag</span><span style="color:var(--grey)">Geschlossen</span></div>
+        </div>
+      </div>
+      <div class="kont-form fi">
+        <h3>NACHRICHT</h3>
+        <div class="sub">Wir antworten innerhalb von 24 Stunden.</div>
+        <div class="kf-grid">
+          <div class="kf-row"><label>Vorname</label><input type="text" placeholder="Max"></div>
+          <div class="kf-row"><label>Nachname</label><input type="text" placeholder="Mustermann"></div>
+        </div>
+        <div class="kf-row"><label>E-Mail</label><input type="email" placeholder="max@beispiel.de"></div>
+        <div class="kf-row"><label>Telefon</label><input type="tel" placeholder="0209 ..."></div>
+        <div class="kf-row"><label>Nachricht</label><textarea placeholder="Beschreiben Sie Ihr Anliegen..."></textarea></div>
+        <button class="kf-submit">Nachricht senden →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="ft-inner">
+    <div>
+      <div class="ft-logo">HK<em>.</em>AUTOKLINIK</div>
+      <div class="ft-addr">Hochofenstraße 21 · 45888 Gelsenkirchen</div>
+    </div>
+    <div class="ft-links">
+      <a href="#">Datenschutz</a>
+      <a href="#">Impressum</a>
+      <a href="#">Cookies</a>
+      <a href="#">Kontakt</a>
+    </div>
+  </div>
+  <div class="c"><div class="ft-copy">© 2026 HK Autoklinik Gelsenkirchen · Made by Eray Dalgic</div></div>
+</footer>
+
+<a href="tel:+4920958901361" class="float-cta" title="Anrufen">📞</a>
+
+<!-- ════════════════════════════════════════════════════
+     JAVASCRIPT – VOLLSTÄNDIG CLIENT-SEITIG (KEINE DB)
+════════════════════════════════════════════════════ -->
+<script>
+/* ══ CONFIG ══════════════════════════════════════════ */
+const MONTHS = ['Januar','Februar','März','April','Mai','Juni',
+                'Juli','August','September','Oktober','November','Dezember'];
+
+// Arbeitszeiten: 0=So,1=Mo,...,6=Sa
+const WORK = {
+  1:{s:'09:00',e:'18:00'},
+  2:{s:'09:00',e:'18:00'},
+  3:{s:'09:00',e:'18:00'},
+  4:{s:'09:00',e:'18:00'},
+  5:{s:'09:00',e:'18:00'},
+  6:{s:'09:00',e:'14:00'},
+};
+const SLOT_MIN = 60; // Minuten pro Slot
+
+// Demo: simulierte Buchungen (Datum → gebuchte Uhrzeiten)
+const DEMO_BOOKED = (() => {
+  const b = {};
+  const today = new Date();
+  // Zufällig für aktuellen Monat ein paar Tage fast voll machen
+  for (let i = 0; i < 12; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + Math.floor(Math.random() * 25) + 1);
+    const key = d.toISOString().slice(0,10);
+    b[key] = b[key] || [];
+    // 1-5 Slots blockieren
+    const n = Math.floor(Math.random() * 5) + 1;
+    for (let j = 0; j < n; j++) {
+      b[key].push(`${String(9 + j).padStart(2,'0')}:00`);
+    }
+  }
+  return b;
+})();
+
+const SERVICES = [
+  {id:1, name:'Lackierung – Beratung',     desc:'Kostenlose Beratung für Teillackierung oder Komplettlackierung mit Farbtonbestimmung.',dur:60, color:'#E8161B'},
+  {id:2, name:'Smart Repair',               desc:'Entfernung von Kratzern, Dellen und Schrammen ohne Teilaustausch.',                   dur:90, color:'#c41014'},
+  {id:3, name:'Unfallschaden – Aufnahme',  desc:'Professionelle Schadensaufnahme und Kostenvoranschlag nach Unfall.',                   dur:60, color:'#a00d10'},
+  {id:4, name:'Autoankauf – Bewertung',    desc:'Schnelle und faire Fahrzeugbewertung für den Ankauf.',                                 dur:45, color:'#7a0d10'},
+  {id:5, name:'Karosserie – Beratung',     desc:'Allgemeine Karosserie- und Lackberatung für Ihr Fahrzeug.',                           dur:60, color:'#E8161B'},
+];
+
+/* ══ STATE ═══════════════════════════════════════════ */
+const S = {
+  year:  new Date().getFullYear(),
+  month: new Date().getMonth() + 1,
+  selDate:    null,
+  selSlot:    null,
+  selService: null,
+  bookings:   JSON.parse(localStorage.getItem('hk_demo_bookings') || '{}'),
+};
+
+/* ══ HILFSFUNKTIONEN ══════════════════════════════════ */
+function pad(n){ return String(n).padStart(2,'0') }
+
+function getSlotsForDate(dateStr){
+  const d   = new Date(dateStr + 'T00:00:00');
+  const dow = d.getDay(); // 0=So
+  const wh  = WORK[dow];
+  if (!wh) return [];
+
+  const slots = [];
+  let cur = toMin(wh.s);
+  const end = toMin(wh.e);
+  const dur = SLOT_MIN;
+
+  while (cur + dur <= end) {
+    const startStr = fromMin(cur);
+    const endStr   = fromMin(cur + dur);
+    const demoB    = DEMO_BOOKED[dateStr] || [];
+    const localB   = S.bookings[dateStr]  || [];
+    const busy     = demoB.includes(startStr) || localB.includes(startStr)
+                     || new Date(dateStr+'T'+startStr) < new Date();
+    slots.push({s: startStr, e: endStr, busy});
+    cur += dur;
+  }
+  return slots;
+}
+
+function toMin(t){ const [h,m]=t.split(':'); return +h*60+ +m }
+function fromMin(m){ return `${pad(Math.floor(m/60))}:${pad(m%60)}` }
+
+function getMonthStatus(year, month){
+  const days = {};
+  const today = new Date(); today.setHours(0,0,0,0);
+  const maxD  = new Date(); maxD.setDate(maxD.getDate() + 56);
+
+  const dim = new Date(year, month, 0).getDate();
+  for (let d = 1; d <= dim; d++){
+    const ds = `${year}-${pad(month)}-${pad(d)}`;
+    const dt = new Date(ds+'T00:00:00');
+    if (dt < today || dt > maxD){ days[d]='past'; continue; }
+    const slots = getSlotsForDate(ds);
+    if (!slots.length){ days[d]='closed'; continue; }
+    const free = slots.filter(s=>!s.busy).length;
+    days[d] = free === 0 ? 'full' : free <= 2 ? 'few' : 'open';
+  }
+  return days;
+}
+
+function fmtDate(ds){
+  const [y,m,d] = ds.split('-');
+  return `${pad(d)}.${pad(m)}.${y}`;
+}
+
+function genRef(){
+  return 'HK-' + Math.random().toString(36).slice(2,10).toUpperCase();
+}
+
+/* ══ KALENDER ════════════════════════════════════════ */
+function renderCal(){
+  document.getElementById('calLabel').textContent = MONTHS[S.month-1] + ' ' + S.year;
+  const now = new Date();
+  document.getElementById('calPrev').disabled =
+    S.year < now.getFullYear() ||
+    (S.year === now.getFullYear() && S.month <= now.getMonth()+1);
+
+  const status = getMonthStatus(S.year, S.month);
+  const grid   = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  // Leere Zellen am Monatsanfang (Mo=0)
+  let first = new Date(S.year, S.month-1, 1).getDay();
+  first = first === 0 ? 6 : first - 1;
+  for (let i = 0; i < first; i++){
+    const e = document.createElement('div');
+    e.className = 'cd empty';
+    grid.appendChild(e);
+  }
+
+  const dim = new Date(S.year, S.month, 0).getDate();
+  for (let d = 1; d <= dim; d++){
+    const st  = status[d] || 'past';
+    const ds  = `${S.year}-${pad(S.month)}-${pad(d)}`;
+    const el  = document.createElement('div');
+    el.className = 'cd ' + st + (ds === S.selDate ? ' sel' : '');
+    el.textContent = d;
+    if (st === 'open' || st === 'few'){
+      el.onclick = () => pickDate(ds);
+    }
+    grid.appendChild(el);
+  }
+}
+
+function pickDate(ds){
+  S.selDate = ds;
+  S.selSlot = null;
+  document.getElementById('s2next').disabled = true;
+  document.getElementById('dtSmry').textContent = '';
+  renderCal();
+  renderSlots(ds);
+  if (!document.getElementById('step2').classList.contains('active')) goStep(2);
+}
+
+/* ══ SLOTS ═══════════════════════════════════════════ */
+function renderSlots(ds){
+  const slots = getSlotsForDate(ds);
+  const el    = document.getElementById('dtContent');
+
+  if (!slots.length){
+    el.innerHTML = `<div class="date-lbl">${fmtDate(ds)}</div><p class="no-day">An diesem Tag sind wir geschlossen.</p>`;
+    return;
+  }
+
+  let html = `<div class="date-lbl">${fmtDate(ds)}</div><div class="slots" id="slotsGrid">`;
+  slots.forEach(sl => {
+    const cls = sl.busy ? 'slot busy' : 'slot';
+    html += `<div class="${cls}" data-s="${sl.s}" data-e="${sl.e}"
+               onclick="pickSlot(this)">
+               ${sl.s}<small>bis ${sl.e}</small>
+             </div>`;
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function pickSlot(el){
+  document.querySelectorAll('.slot').forEach(s => s.classList.remove('sel'));
+  el.classList.add('sel');
+  S.selSlot = {s: el.dataset.s, e: el.dataset.e};
+  document.getElementById('s2next').disabled = false;
+  document.getElementById('dtSmry').textContent = fmtDate(S.selDate) + ' · ' + el.dataset.s;
+}
+
+/* ══ SERVICES ════════════════════════════════════════ */
+function renderServices(){
+  const c = document.getElementById('svcPick');
+  c.innerHTML = '';
+  SERVICES.forEach(sv => {
+    const el = document.createElement('div');
+    el.className = 'svc-opt';
+    el.innerHTML = `
+      <div class="nm"><span style="color:${sv.color};margin-right:5px">●</span>${sv.name}</div>
+      <div class="dc">${sv.desc}</div>
+      <div class="dr">⏱ ${sv.dur} Min.</div>`;
+    el.onclick = () => pickService(el, sv);
+    c.appendChild(el);
+  });
+}
+
+function pickService(el, sv){
+  document.querySelectorAll('.svc-opt').forEach(e => e.classList.remove('sel'));
+  el.classList.add('sel');
+  S.selService = sv;
+  document.getElementById('s1next').disabled = false;
+  document.getElementById('sSmry').textContent = sv.name;
+}
+
+/* ══ STEPS ════════════════════════════════════════════ */
+function goStep(n){
+  for (let i = 1; i <= 3; i++){
+    const s = document.getElementById('step'+i);
+    s.classList.remove('active','done');
+    if (i < n) s.classList.add('done');
+  }
+  document.getElementById('step'+n).classList.add('active');
+  document.getElementById('step'+n).scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* ══ SUBMIT ══════════════════════════════════════════ */
+function doSubmit(){
+  const fn  = document.getElementById('fn').value.trim();
+  const ln  = document.getElementById('ln').value.trim();
+  const ph  = document.getElementById('ph').value.trim();
+  const em  = document.getElementById('em').value.trim();
+  const err = document.getElementById('bkErr');
+
+  if (!fn||!ln||!ph||!em){
+    err.textContent = '⚠ Bitte füllen Sie alle Pflichtfelder aus.';
+    err.style.display = 'block'; return;
+  }
+  if (!S.selService){ err.textContent='⚠ Bitte eine Leistung wählen.'; err.style.display='block'; return; }
+  if (!S.selDate||!S.selSlot){ err.textContent='⚠ Bitte Datum und Uhrzeit wählen.'; err.style.display='block'; return; }
+
+  err.style.display = 'none';
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = '⏳ Wird gespeichert...';
+
+  // Buchung in localStorage speichern (Demo)
+  S.bookings[S.selDate] = S.bookings[S.selDate] || [];
+  S.bookings[S.selDate].push(S.selSlot.s);
+  localStorage.setItem('hk_demo_bookings', JSON.stringify(S.bookings));
+
+  const ref = genRef();
+  const br  = document.getElementById('br').value.trim();
+  const mo  = document.getElementById('mo').value.trim();
+
+  setTimeout(() => {
+    document.getElementById('bkSteps').style.display = 'none';
+    const succ = document.getElementById('bkSuccess');
+    succ.style.display = 'block';
+    document.getElementById('succRef').textContent = ref;
+    document.getElementById('succInfo').innerHTML =
+      `<strong>${S.selService.name}</strong><br>
+       ${fmtDate(S.selDate)} · ${S.selSlot.s} – ${S.selSlot.e} Uhr<br>
+       ${br ? `<br>Fahrzeug: <strong>${br} ${mo}</strong>` : ''}
+       <br><br>Eine Bestätigung würde an <strong>${em}</strong> gesendet.<br>
+       <em style="font-size:.8rem;opacity:.55">(Demo-Modus: keine echte E-Mail)</em>`;
+    succ.scrollIntoView({behavior:'smooth'});
+
+    // Kalender neu rendern (gebuchter Slot ist jetzt weg)
+    renderCal();
+  }, 600);
+}
+
+function resetAll(){
+  S.selDate = null; S.selSlot = null; S.selService = null;
+  document.getElementById('fn').value='';
+  document.getElementById('ln').value='';
+  document.getElementById('ph').value='';
+  document.getElementById('em').value='';
+  document.getElementById('br').value='';
+  document.getElementById('mo').value='';
+  document.getElementById('lp').value='';
+  document.getElementById('msg').value='';
+  document.getElementById('bkSteps').style.display='flex';
+  document.getElementById('bkSteps').style.flexDirection='column';
+  document.getElementById('bkSuccess').style.display='none';
+  document.getElementById('s1next').disabled=true;
+  document.getElementById('s2next').disabled=true;
+  document.querySelectorAll('.svc-opt').forEach(e=>e.classList.remove('sel'));
+  document.getElementById('sSmry').textContent='';
+  document.getElementById('dtSmry').textContent='';
+  document.getElementById('dtContent').innerHTML='<p class="no-day">Bitte wählen Sie einen Tag im Kalender links.</p>';
+  document.getElementById('submitBtn').disabled=false;
+  document.getElementById('submitBtn').textContent='Termin verbindlich anfragen →';
+  goStep(1);
+  renderCal();
+}
+
+/* ══ NAV-PFEILE ══════════════════════════════════════ */
+document.getElementById('calPrev').onclick = () => {
+  if (--S.month < 1){ S.month=12; S.year--; } renderCal();
+};
+document.getElementById('calNext').onclick = () => {
+  if (++S.month > 12){ S.month=1; S.year++; } renderCal();
+};
+
+/* ══ SCROLL-ANIMATIONEN ══════════════════════════════ */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) setTimeout(()=>e.target.classList.add('v'), i*75);
+  });
+},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+/* ══ NAVBAR-SCROLL ════════════════════════════════════ */
+window.addEventListener('scroll', ()=>{
+  const n=document.getElementById('nav');
+  const sc=window.scrollY>50;
+  n.style.background = sc ? 'rgba(10,10,10,.97)' : 'rgba(10,10,10,.88)';
+  n.style.borderBottomColor = sc ? 'rgba(232,22,27,.32)' : 'rgba(232,22,27,.18)';
+});
+
+/* ══ INIT ════════════════════════════════════════════ */
+renderServices();
+renderCal();
+</script>
+</body>
+</html>
