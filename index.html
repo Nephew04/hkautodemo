@@ -22,7 +22,7 @@ html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:var(--fb);overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:9999;opacity:.5}
+  pointer-events:none;z-index:9999;opacity:.035}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-thumb{background:var(--red)}
 a{text-decoration:none;color:inherit}
@@ -62,7 +62,8 @@ nav{
 .hero-tag{display:inline-flex;align-items:center;gap:10px;
   font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
   color:var(--red);margin-bottom:28px}
-.hero-tag::before{content:'';display:block;width:28px;height:2px;background:var(--red)}
+.hero-tag::before{display:none}
+.hero-tag-logo{height:200px;width:auto;display:block;margin-left: -30px;}
 h1.hero-h1{font-family:var(--fd);font-size:clamp(3.8rem,6.5vw,9rem);
   line-height:.9;letter-spacing:2px;margin-bottom:26px}
 h1.hero-h1 em{color:var(--red);font-style:normal;display:block}
@@ -132,22 +133,23 @@ section{padding:116px 0}
    ÜBER UNS
 ════════════════════════════════════════════════════ */
 #ueber-uns{background:var(--dark)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-grid{display:grid;grid-template-columns:1fr;gap:0;align-items:center;max-width:680px}
 .about-text p{font-size:1rem;font-weight:300;color:#999;line-height:1.85;margin-bottom:22px}
 .about-text strong{color:#fff;font-weight:600}
-.about-visual{position:relative;height:460px}
-.av-main{position:absolute;inset:0 44px 44px 0;
+.about-visual{position:relative;height:280px}
+.av-main{position:absolute;inset:0 44px 0 0;
   background:linear-gradient(138deg,var(--dark2),var(--dark3));
   border:1px solid rgba(255,255,255,.055);border-radius:4px;
-  padding:32px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+  padding:32px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .av-main::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
-.av-big{font-family:var(--fd);font-size:7rem;color:rgba(255,255,255,.035);line-height:1;margin-bottom:20px}
+.av-big-logo{width:160px;height:auto;display:block;margin-bottom:20px;
+  opacity:.55}
 .av-main .lbl{font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-bottom:7px}
 .av-main h3{font-size:1.35rem;font-weight:600;line-height:1.35}
-.av-float{position:absolute;bottom:0;right:0;width:190px;
-  background:var(--red);padding:22px;border-radius:4px}
-.av-float .big{font-family:var(--fd);font-size:3.2rem;line-height:1}
-.av-float small{font-size:.72rem;font-weight:700;letter-spacing:1.5px;
+.av-float{position:absolute;bottom:0;right:0;width:160px;
+  background:var(--red);padding:18px;border-radius:4px}
+.av-float .big{font-family:var(--fd);font-size:2.6rem;line-height:1}
+.av-float small{font-size:.68rem;font-weight:700;letter-spacing:1.5px;
   text-transform:uppercase;color:rgba(255,255,255,.72)}
 
 /* ════════════════════════════════════════════════════
@@ -184,15 +186,12 @@ section{padding:116px 0}
   position:absolute;top:50%;left:-20px;transform:translateY(-50%);
   pointer-events:none;
 }
-.booking-layout{display:grid;grid-template-columns:420px 1fr;gap:44px;align-items:start;position:relative;z-index:1}
+.booking-layout{display:grid;grid-template-columns:1fr;gap:44px;align-items:start;position:relative;z-index:1;max-width:780px}
 
-/* ── Kalender ── */
-.cal-box{background:var(--dark);border:1px solid rgba(255,255,255,.07);border-radius:6px;overflow:hidden;position:sticky;top:90px;
-  opacity:0;pointer-events:none;transform:translateY(12px);
-  transition:opacity .4s cubic-bezier(.4,0,.2,1), transform .4s cubic-bezier(.4,0,.2,1);
-  max-height:0;overflow:hidden;
+/* ── Kalender (inline in Step 2) ── */
+.cal-box{background:var(--dark);border:1px solid rgba(255,255,255,.07);border-radius:6px;overflow:hidden;
+  margin-bottom:6px;
 }
-.cal-box.visible{opacity:1;pointer-events:all;transform:translateY(0);max-height:600px;overflow:visible}
 .cal-hdr{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid rgba(255,255,255,.055)}
 .cal-month{font-family:var(--fd);font-size:1.55rem;letter-spacing:3px}
 .cal-nav-btn{background:none;border:1px solid rgba(255,255,255,.1);color:#fff;
@@ -346,7 +345,7 @@ section{padding:116px 0}
 .btn-white:hover{transform:translateY(-2px)}
 
 /* ════════════════════════════════════════════════════
-   GALERIE
+   GALERIE – DYNAMISCH
 ════════════════════════════════════════════════════ */
 #galerie{background:var(--black)}
 .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,210px);gap:3px;margin-top:44px}
@@ -354,6 +353,9 @@ section{padding:116px 0}
   position:relative;overflow:hidden;cursor:pointer}
 .gal-item:first-child{grid-column:span 2;grid-row:span 2}
 .gal-item:nth-child(4){grid-column:span 2}
+.gal-item img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.gal-item:hover img{transform:scale(1.06)}
 .gal-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:10px;color:rgba(255,255,255,.09);transition:color .3s;padding:16px;width:100%;height:100%}
 .gal-item:hover .gal-ph{color:rgba(232,22,27,.38)}
@@ -362,10 +364,91 @@ section{padding:116px 0}
 .gal-item::after{content:'';position:absolute;inset:0;border:0px solid var(--red);
   transition:border-width .28s;pointer-events:none}
 .gal-item:hover::after{border-width:2px}
+/* Lightbox */
+.gal-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.93);backdrop-filter:blur(12px);
+  z-index:9000;display:none;align-items:center;justify-content:center}
+.gal-lightbox.open{display:flex}
+.gal-lb-inner{position:relative;max-width:90vw;max-height:90vh;display:flex;flex-direction:column;align-items:center}
+.gal-lb-inner img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:4px;
+  box-shadow:0 24px 80px rgba(0,0,0,.8)}
+.gal-lb-close{position:absolute;top:-44px;right:0;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);color:#fff;width:38px;height:38px;border-radius:50%;
+  font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .2s}
+.gal-lb-close:hover{background:var(--red);border-color:var(--red)}
+.gal-lb-prev,.gal-lb-next{position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;
+  width:44px;height:44px;border-radius:50%;font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.gal-lb-prev{left:-60px}.gal-lb-next{right:-60px}
+.gal-lb-prev:hover,.gal-lb-next:hover{background:var(--red);border-color:var(--red)}
+.gal-lb-caption{font-size:.76rem;color:rgba(255,255,255,.38);letter-spacing:2px;
+  text-transform:uppercase;margin-top:12px;text-align:center}
 
 /* ════════════════════════════════════════════════════
-   BEWERTUNGEN
+   SPONSOREN-LOGOS
 ════════════════════════════════════════════════════ */
+#partner{background:var(--black);padding:76px 0}
+.partner-ttl{text-align:center;font-size:.72rem;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--grey);margin-bottom:44px}
+.partner-logos{display:flex;justify-content:center;gap:60px;align-items:center;flex-wrap:wrap}
+.plogo{font-family:var(--fd);font-size:1.45rem;letter-spacing:3px;
+  color:rgba(255,255,255,.13);text-transform:uppercase;transition:color .2s;cursor:default}
+.plogo:hover{color:rgba(255,255,255,.38)}
+.plogo-img{display:flex;align-items:center;justify-content:center;
+  ;transition:opacity .3s;cursor:default}
+.plogo-img img{height:44px;width:auto;object-fit:contain;}
+
+/* ════════════════════════════════════════════════════
+   INSTAGRAM FEED GRID
+════════════════════════════════════════════════════ */
+#instagram{background:var(--dark);padding:96px 0}
+.ig-profile{display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:36px}
+.ig-avatar{width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ig-profile-handle{font-family:var(--fd);font-size:1.35rem;letter-spacing:3px;color:#fff;
+  text-decoration:none;transition:color .2s}
+.ig-profile-handle:hover{color:rgba(255,255,255,.65)}
+.ig-follow-btn{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+  color:#fff;padding:8px 22px;border-radius:2px;font-size:.72rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  transition:opacity .2s;flex-shrink:0}
+.ig-follow-btn:hover{opacity:.82}
+
+/* 3×3 Grid */
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:0}
+.ig-post{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:var(--dark2)}
+.ig-post img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.ig-post:hover img{transform:scale(1.07)}
+.ig-post-overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.52);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;
+  opacity:0;transition:opacity .28s;
+  padding:12px;
+}
+.ig-post:hover .ig-post-overlay{opacity:1}
+.ig-post-desc{color:#fff;font-size:.78rem;font-weight:400;text-align:center;
+  line-height:1.45;max-height:3.6em;overflow:hidden;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.ig-post-icon{color:rgba(255,255,255,.7);font-size:.72rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:5px}
+
+/* Placeholder wenn kein Bild */
+.ig-post-placeholder{width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;
+  color:rgba(255,255,255,.08);font-family:var(--fd);font-size:1rem;letter-spacing:2px}
+.ig-post-placeholder svg{opacity:.12}
+
+/* Hover-Rahmen */
+.ig-post::after{content:'';position:absolute;inset:0;
+  border:0px solid var(--red);transition:border-width .25s;pointer-events:none}
+.ig-post:hover::after{border-width:2px}
+
+.ig-footer{text-align:center;margin-top:36px}
 #bewertungen{background:var(--dark)}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
 .rev-card{background:var(--dark2);border:1px solid rgba(255,255,255,.055);
@@ -379,15 +462,8 @@ section{padding:116px 0}
 .rev-date{font-size:.72rem;color:var(--grey);margin-top:2px}
 
 /* ════════════════════════════════════════════════════
-   PARTNER
+   BEWERTUNGEN
 ════════════════════════════════════════════════════ */
-#partner{background:var(--black);padding:76px 0}
-.partner-ttl{text-align:center;font-size:.72rem;font-weight:700;letter-spacing:3px;
-  text-transform:uppercase;color:var(--grey);margin-bottom:44px}
-.partner-logos{display:flex;justify-content:center;gap:60px;align-items:center;flex-wrap:wrap}
-.plogo{font-family:var(--fd);font-size:1.45rem;letter-spacing:3px;
-  color:rgba(255,255,255,.13);text-transform:uppercase;transition:color .2s;cursor:default}
-.plogo:hover{color:rgba(255,255,255,.38)}
 
 /* ════════════════════════════════════════════════════
    KONTAKT
@@ -510,6 +586,18 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
   color:var(--red)!important;border-color:rgba(232,22,27,.2);
   margin-top:10px;
 }
+.mobile-nav-close{
+  position:absolute;top:22px;right:22px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  color:#fff;width:46px;height:46px;border-radius:50%;
+  cursor:pointer;font-size:1.6rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:scale(.8);
+  transition:opacity .35s .1s,transform .35s .1s,background .2s,border-color .2s;
+  z-index:1060;
+}
+.mobile-nav.open .mobile-nav-close{opacity:1;transform:scale(1)}
+.mobile-nav-close:hover{background:var(--red);border-color:var(--red)}
 
 /* ════════════════════════════════════════════════════
    RESPONSIVE
@@ -517,7 +605,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
 @media(max-width:1100px){
   #hero{grid-template-columns:1fr}
   .hero-right{display:none}
-  .about-grid,.ank-grid,.kont-grid,.booking-layout{grid-template-columns:1fr;gap:36px}
+  .about-grid,.ank-grid,.kont-grid{grid-template-columns:1fr;gap:36px}
   .svc-grid,.rev-grid{grid-template-columns:1fr}
   .stats-inner{grid-template-columns:repeat(2,1fr)}
   nav{padding:0 22px}
@@ -528,6 +616,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
   .svc-pick{grid-template-columns:1fr}
   .cal-box{position:relative;top:0}
   .lhdr{flex-direction:column;align-items:flex-start;gap:14px}
+  .ig-inner{padding:0 22px}
 }
 @media(max-width:768px){
   section{padding:72px 0}
@@ -543,7 +632,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
   .about-visual{height:300px}
   .av-float{width:140px;padding:16px}
   .av-float .big{font-size:2.4rem}
-  .av-big{font-size:5rem}
+  .av-big-logo{width:110px}
   .ank-big{font-size:7rem}
   .stitle{font-size:clamp(2rem,8vw,3.5rem)}
   .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
@@ -553,13 +642,15 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
   .kont-form{padding:28px 20px}
   .ft-inner{flex-direction:column;align-items:flex-start;padding:0 22px}
   .float-cta{bottom:20px;right:16px;width:48px;height:48px;font-size:1.1rem}
-  .booking-layout{grid-template-columns:1fr}
   .bk-success{padding:32px 20px}
   #termin::before{font-size:30vw}
   #ankauf::before{font-size:26vw}
   .svc-pick{grid-template-columns:1fr}
   .slots{grid-template-columns:repeat(3,1fr)}
   .f-grid,.kf-grid,.ank-feats{grid-template-columns:1fr}
+  .gal-lb-prev{left:-14px}.gal-lb-next{right:-14px}
+  .ig-badge{flex-direction:column;gap:10px;padding:20px 28px}
+  .ig-badge-handle{font-size:1.4rem}
 }
 @media(max-width:480px){
   .c{padding:0 16px}
@@ -619,6 +710,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
 
 <!-- Mobile Navigation Overlay -->
 <div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Menü schließen">&#x2715;</button>
   <a href="#ueber-uns" onclick="closeMobileNav()">Über uns</a>
   <a href="#leistungen" onclick="closeMobileNav()">Leistungen</a>
   <a href="#termin" onclick="closeMobileNav()">Termin</a>
@@ -630,7 +722,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
 <!-- ═══════════ HERO ═══════════ -->
 <section id="hero">
   <div class="hero-left">
-    <div class="hero-tag">Gelsenkirchen · Ihr Vertrauen seit Jahren</div>
+    <div class="hero-tag"><img src="logo.png" alt="HK Autoklinik" class="hero-tag-logo"></div>
     <h1 class="hero-h1">DIE AUTO<em>KLINIK</em>GELSEN&shy;KIRCHEN</h1>
     <p class="hero-sub">Ihr Spezialist für professionelle Lackierung, Smart Repair und komplette Unfallinstandsetzung. Jetzt Termin online buchen!</p>
     <div class="hero-btns">
@@ -705,17 +797,6 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
         </div>
         <a href="#termin" class="btn btn-red" style="margin-top:30px;display:inline-flex">Jetzt Termin buchen →</a>
       </div>
-      <div class="about-visual fi">
-        <div class="av-main">
-          <div class="av-big">HK</div>
-          <div class="lbl">Unsere Mission</div>
-          <h3>Ihr Fahrzeug in Topform – präzise, schnell und werterhaltend</h3>
-        </div>
-        <div class="av-float">
-          <div class="big">5★</div>
-          <small>Google<br>Bewertung</small>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -761,27 +842,6 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
 
     <div class="booking-layout fi">
 
-      <!-- ── KALENDER ── -->
-      <div class="cal-box">
-        <div class="cal-hdr">
-          <button class="cal-nav-btn" id="calPrev">&#8592;</button>
-          <div class="cal-month" id="calLabel">–</div>
-          <button class="cal-nav-btn" id="calNext">&#8594;</button>
-        </div>
-        <div class="cal-wdays">
-          <div class="cal-wd">Mo</div><div class="cal-wd">Di</div><div class="cal-wd">Mi</div>
-          <div class="cal-wd">Do</div><div class="cal-wd">Fr</div><div class="cal-wd">Sa</div>
-          <div class="cal-wd">So</div>
-        </div>
-        <div class="cal-grid" id="calGrid"></div>
-        <div class="cal-legend">
-          <div class="leg"><div class="leg-dot" style="background:#00d46a"></div>Verfügbar</div>
-          <div class="leg"><div class="leg-dot" style="background:#ffb700"></div>Wenige Slots</div>
-          <div class="leg"><div class="leg-dot" style="background:rgba(255,80,80,.45)"></div>Ausgebucht</div>
-          <div class="leg"><div class="leg-dot" style="background:rgba(255,255,255,.15)"></div>Geschlossen</div>
-        </div>
-      </div>
-
       <!-- ── STEPS ── -->
       <div>
         <div class="bk-steps" id="bkSteps">
@@ -807,7 +867,27 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
               <div class="step-smry" id="dtSmry"></div>
             </div>
             <div class="step-body">
-              <div id="dtContent"><p class="no-day">Bitte wählen Sie einen Tag im Kalender links.</p></div>
+              <!-- Kalender direkt hier eingebettet -->
+              <div class="cal-box" id="calBoxInline">
+                <div class="cal-hdr">
+                  <button class="cal-nav-btn" id="calPrev">&#8592;</button>
+                  <div class="cal-month" id="calLabel">–</div>
+                  <button class="cal-nav-btn" id="calNext">&#8594;</button>
+                </div>
+                <div class="cal-wdays">
+                  <div class="cal-wd">Mo</div><div class="cal-wd">Di</div><div class="cal-wd">Mi</div>
+                  <div class="cal-wd">Do</div><div class="cal-wd">Fr</div><div class="cal-wd">Sa</div>
+                  <div class="cal-wd">So</div>
+                </div>
+                <div class="cal-grid" id="calGrid"></div>
+                <div class="cal-legend">
+                  <div class="leg"><div class="leg-dot" style="background:#00d46a"></div>Verfügbar</div>
+                  <div class="leg"><div class="leg-dot" style="background:#ffb700"></div>Wenige Slots</div>
+                  <div class="leg"><div class="leg-dot" style="background:rgba(255,80,80,.45)"></div>Ausgebucht</div>
+                  <div class="leg"><div class="leg-dot" style="background:rgba(255,255,255,.15)"></div>Geschlossen</div>
+                </div>
+              </div>
+              <div id="dtContent" style="margin-top:18px"><p class="no-day">Bitte wählen Sie einen Tag im Kalender oben.</p></div>
               <button class="bk-btn" id="s2next" disabled onclick="goStep(3)" style="margin-top:14px">Weiter → Ihre Daten eingeben</button>
             </div>
           </div>
@@ -871,14 +951,14 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
           <div class="ank-feat"><span class="icon">✓</span>Sofortige Auszahlung</div>
           <div class="ank-feat"><span class="icon">✓</span>Keine versteckten Kosten</div>
         </div>
-        <a href="#termin" class="btn btn-red">Jetzt anfragen →</a>
+        <a href="#termin" class="btn btn-red">Jetzt Termin vereinbaren →</a>
       </div>
       <div class="fi">
         <div class="ank-big">€</div>
         <div class="ank-card">
           <h3>FAIR &amp; SCHNELL</h3>
           <p>Fahrzeugbewertung und transparentes Angebot – wir übernehmen die komplette Abwicklung inklusive Abmeldung.</p>
-          <a href="/cdn-cgi/l/email-protection#f69f989099b69e9ddb978382999d9a9f989f9dd89293" class="btn-white">Jetzt schreiben →</a>
+          <a href="mailto:info@hk-autoklinik.de" class="btn-white">Jetzt schreiben →</a>
         </div>
       </div>
     </div>
@@ -890,14 +970,29 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
   <div class="c">
     <div class="stag fi">Galerie</div>
     <h2 class="stitle fi">EINBLICKE IN<br>UNSERE ARBEIT<span class="accent">.</span></h2>
-    <div class="gal-grid">
-      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">🎨</div><div class="gal-lbl">Lackierung Komplett</div></div></div>
-      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">🔧</div><div class="gal-lbl">Smart Repair</div></div></div>
-      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">🚗</div><div class="gal-lbl">Unfall Vorher</div></div></div>
-      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">✨</div><div class="gal-lbl">Unfall Nachher</div></div></div>
-      <div class="gal-item"><div class="gal-ph"><div class="gal-ico">🏆</div><div class="gal-lbl">Karosserie</div></div></div>
+
+    <!-- 
+      ════════════════════════════════════════════
+      BILDER HINZUFÜGEN: Legen Sie Ihre Fotos 
+      einfach in denselben Ordner wie diese Datei.
+      Unterstützte Formate: .jpg, .jpeg, .png, .webp
+      Tragen Sie die Dateinamen unten in das Array ein.
+      ════════════════════════════════════════════
+    -->
+    <div class="gal-grid" id="galGrid"></div>
+
+    <!-- Lightbox -->
+    <div class="gal-lightbox" id="galLightbox" onclick="closeLightbox()">
+      <div class="gal-lb-inner" onclick="event.stopPropagation()">
+        <button class="gal-lb-close" onclick="closeLightbox()">&#x2715;</button>
+        <button class="gal-lb-prev" onclick="lbNav(-1)">&#8592;</button>
+        <img id="galLbImg" src="" alt="">
+        <div class="gal-lb-caption" id="galLbCaption"></div>
+        <button class="gal-lb-next" onclick="lbNav(1)">&#8594;</button>
+      </div>
     </div>
-    <p style="color:var(--grey);font-size:.78rem;text-align:center;margin-top:20px;letter-spacing:1px">📸 Folgen Sie uns auf Instagram für aktuelle Einblicke</p>
+
+    <p style="color:var(--grey);font-size:.78rem;text-align:center;margin-top:28px;letter-spacing:1px">📸 Folgen Sie uns auf Instagram für aktuelle Einblicke</p>
   </div>
 </section>
 
@@ -929,16 +1024,59 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
   </div>
 </section>
 
-<!-- ═══════════ PARTNER ═══════════ -->
+<!-- ═══════════ PARTNER / SPONSOREN ═══════════ -->
 <section id="partner">
   <div class="c">
     <div class="partner-ttl fi">Unsere zufriedenen Stammkunden &amp; Partner</div>
-    <div class="partner-logos fi">
-      <div class="plogo">GERKO</div>
-      <div class="plogo">ULUPINAR</div>
-      <div class="plogo">SATA</div>
-      <div class="plogo">FAHRSCHULE EDI</div>
-      <div class="plogo">AUTOHAUS FERDI</div>
+
+    <!--
+      ════════════════════════════════════════════
+      SPONSOREN-LOGOS HINZUFÜGEN:
+      Legen Sie Logo-Bilder (z.B. sponsor1.png) in
+      denselben Ordner. Tragen Sie Dateinamen + Name
+      in das SPONSORS-Array im Script-Block unten ein.
+      Ohne Bild wird der Name als Text angezeigt.
+      ════════════════════════════════════════════
+    -->
+    <div class="partner-logos fi" id="sponsorLogos"></div>
+  </div>
+</section>
+
+<!-- ═══════════ INSTAGRAM ═══════════ -->
+<section id="instagram">
+  <div class="c">
+    <div class="stag fi" style="justify-content:center;margin-bottom:10px">Social Media</div>
+    <h2 class="stitle fi" style="text-align:center;margin-bottom:10px">FOLGEN SIE<br>UNS AUF<span class="accent"> INSTAGRAM.</span></h2>
+
+    <!-- Header mit Handle -->
+    <div class="ig-profile fi">
+      <div class="ig-avatar">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>
+      </div>
+      <a href="https://www.instagram.com/IhrHandle" target="_blank" rel="noopener" class="ig-profile-handle" id="igLink">@<span id="igHandle">IhrHandle</span></a>
+      <a href="https://www.instagram.com/IhrHandle" target="_blank" rel="noopener" class="ig-follow-btn" id="igFollowBtn">Folgen</a>
+    </div>
+
+    <!--
+    ════════════════════════════════════════════════════
+    INSTAGRAM FEED PFLEGEN – NUR HIER ANPASSEN:
+    
+    1. Fotos in denselben Ordner wie index.html legen
+    2. Dateinamen + Link + Beschreibung eintragen
+    3. Bis zu 9 Posts werden angezeigt (3×3 Grid)
+    
+    Beispiel:
+    { img: 'insta1.jpg', url: 'https://www.instagram.com/p/XXXXX/', desc: 'Lackierung fertig ✨' }
+    ════════════════════════════════════════════════════
+    -->
+
+    <div class="ig-grid fi" id="igGrid"></div>
+
+    <div class="ig-footer fi">
+      <a href="https://www.instagram.com/IhrHandle" target="_blank" rel="noopener" class="btn btn-outline" id="igMoreBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+        Mehr auf Instagram ansehen
+      </a>
     </div>
   </div>
 </section>
@@ -955,9 +1093,9 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
             <div class="kont-ico">📞</div>
             <div><div class="kont-lbl">Telefon</div><div class="kont-val">0209 - 58 901 361</div></div>
           </a>
-          <a href="/cdn-cgi/l/email-protection#670e090108270f0c4a061213080c0b0e090e0c490302" class="kont-item">
+          <a href="mailto:info@hk-autoklinik.de" class="kont-item">
             <div class="kont-ico">✉️</div>
-            <div><div class="kont-lbl">E-Mail</div><div class="kont-val"><span class="__cf_email__" data-cfemail="f29b9c949db29a99df9387869d999e9b9c9b99dc9697">[email&#160;protected]</span></div></div>
+            <div><div class="kont-lbl">E-Mail</div><div class="kont-val">info@hk-autoklinik.de</div></div>
           </a>
           <a href="https://share.google/IurLFgdAsKRc0RsQG" target="_blank" class="kont-item">
             <div class="kont-ico">📍</div>
@@ -1009,7 +1147,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.055);paddi
 <!-- ════════════════════════════════════════════════════
      JAVASCRIPT – VOLLSTÄNDIG CLIENT-SEITIG (KEINE DB)
 ════════════════════════════════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ══ CONFIG ══════════════════════════════════════════ */
 const MONTHS = ['Januar','Februar','März','April','Mai','Juni',
                 'Juli','August','September','Oktober','November','Dezember'];
@@ -1227,14 +1365,6 @@ function goStep(n){
   }
   document.getElementById('step'+n).classList.add('active');
   document.getElementById('step'+n).scrollIntoView({behavior:'smooth',block:'nearest'});
-
-  // Kalender erst ab Step 2 anzeigen
-  const calBox = document.querySelector('.cal-box');
-  if (n >= 2) {
-    calBox.classList.add('visible');
-  } else {
-    calBox.classList.remove('visible');
-  }
 }
 
 /* ══ SUBMIT ══════════════════════════════════════════ */
@@ -1301,10 +1431,9 @@ function resetAll(){
   document.querySelectorAll('.svc-opt').forEach(e=>e.classList.remove('sel'));
   document.getElementById('sSmry').textContent='';
   document.getElementById('dtSmry').textContent='';
-  document.getElementById('dtContent').innerHTML='<p class="no-day">Bitte wählen Sie einen Tag im Kalender links.</p>';
+  document.getElementById('dtContent').innerHTML='<p class="no-day">Bitte wählen Sie einen Tag im Kalender oben.</p>';
   document.getElementById('submitBtn').disabled=false;
   document.getElementById('submitBtn').textContent='Termin verbindlich anfragen →';
-  document.querySelector('.cal-box').classList.remove('visible');
   goStep(1);
   renderCal();
 }
@@ -1352,6 +1481,183 @@ window.addEventListener('scroll', ()=>{
 /* ══ INIT ════════════════════════════════════════════ */
 renderCal();
 renderServices();
+
+/* ══════════════════════════════════════════════════
+   ▓▓  KONFIGURATION – HIER ANPASSEN  ▓▓
+══════════════════════════════════════════════════
+
+   1) GALERIE-BILDER
+   Fügen Sie Ihre Bilder in denselben Ordner wie
+   index.html ein und tragen Sie die Dateinamen
+   sowie Beschriftungen hier ein:
+*/
+const GALLERY_IMAGES = [
+  { src: 'img/galerie6.jpg', caption: 'Weitere Arbeit' },
+  { src: 'img/galerie1.jpg', caption: 'Unfall Vorher' },
+  { src: 'img/galerie2.jpg', caption: 'Unfall Vorher' },
+  { src: 'img/galerie3.jpg', caption: 'Unfall Nachher' },
+  { src: 'img/galerie4.jpg', caption: 'Unfall Nachher' },
+  { src: 'img/galerie5.jpg', caption: 'Lackierung' },
+  { src: 'img/galerie7.jpg', caption: 'Lackierung' },
+];
+
+/*
+   2) SPONSOREN / PARTNER-LOGOS
+   Mit Bild: { name: 'GERKO', logo: 'sponsor-gerko.png' }
+   Ohne Bild: { name: 'GERKO' }
+*/
+const SPONSORS = [
+  { name: 'GERKO', logo: 'img/sponsor/gerko.jpg' },
+  { name: 'ULUPINAR', logo: 'img/sponsor/ulupinar.jpg' },
+  { name: 'SATA', logo: 'img/sponsor/sata.jpg' },
+  { name: 'FAHRSCHULE EDI', logo: 'img/sponsor/edi.jpg' },
+  { name: 'AUTOHAUS FERDI', logo: 'img/sponsor/ferdi.jpg' },
+  // { name: 'IHR SPONSOR', logo: 'sponsor-name.png' },
+];
+
+/*
+   3) INSTAGRAM → wird direkt im Feed-Grid-Block unten konfiguriert
+*/
+
+/* ══════════════════════════════════════════════════
+   AB HIER NICHTS ÄNDERN
+══════════════════════════════════════════════════ */
+
+// Instagram Feed Grid
+(function(){
+  /* ════════════════════════════════════════════════════
+     HIER ANPASSEN:
+     1. Ihren Instagram-Handle eintragen
+     2. Bis zu 9 Posts eintragen
+        { img: 'dateiname.jpg', url: 'https://www.instagram.com/p/POSTID/', desc: 'Beschreibung' }
+     ════════════════════════════════════════════════════ */
+  const HANDLE = 'hk_die_autoklinik'; // ← z.B. 'hk.autoklinik'
+
+  const POSTS = [
+    { img: 'img/insta/1.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/DFlY13XuCXf/', desc: 'Audi A3 Vorher/ Nachher' },
+    { img: 'img/insta/2.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/DFlYh-SOkbj/', desc: 'Seat Ibiza Vorher/ Nachher' },
+    { img: 'img/insta/3.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/C8Jr2RluaBo/', desc: '#C63#painting#cars' },
+    { img: 'img/insta/4.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/B-j94goALMu/', desc: 'Vorher-Nachher Mercedes-Benz B-Klasse' },
+    { img: 'img/insta/5.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/B-T9yb6g75i/', desc: 'Vorher-Nachher Mercedes-Benz C-Klasse Kombi' },
+    { img: 'img/insta/6.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/B91XfQqohEM/', desc: 'Vorher-Nachher Mercedes-Benz B-Klasse' },
+    { img: 'img/insta/7.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/B9hSijEhb-S/', desc: 'Vorher-Nachher Felgeninstandsetzung' },
+    { img: 'img/insta/8.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/B8n6XC4oCOk/', desc: 'Vorher-Nachher' },
+    { img: 'img/insta/9.jpg', url: 'https://www.instagram.com/hk_die_autoklinik/p/B8eo1q2owfd/', desc: 'Vorher-Nachher' },
+  ];
+
+
+  const igUrl = 'https://www.instagram.com/' + HANDLE;
+  document.getElementById('igHandle').textContent = "HK die Autoklinik";
+  document.querySelectorAll('#igLink,#igFollowBtn,#igMoreBtn').forEach(el => el.href = igUrl);
+
+  const grid = document.getElementById('igGrid');
+  const count = Math.min(POSTS.length || 9, 9);
+
+  if (POSTS.length === 0) {
+    // Platzhalter anzeigen
+    for (let i = 0; i < 9; i++) {
+      const div = document.createElement('div');
+      div.className = 'ig-post';
+      div.innerHTML = `<div class="ig-post-placeholder">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.5"/>
+          <circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.5"/>
+          <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
+        </svg>
+        <span>Foto ${i+1}</span>
+      </div>`;
+      div.onclick = () => window.open(igUrl, '_blank');
+      grid.appendChild(div);
+    }
+  } else {
+    POSTS.slice(0, 9).forEach(post => {
+      const div = document.createElement('div');
+      div.className = 'ig-post';
+      div.innerHTML = `
+        <img src="${post.img}" alt="${post.desc || ''}">
+        <div class="ig-post-overlay">
+          ${post.desc ? `<div class="ig-post-desc">${post.desc}</div>` : ''}
+          <div class="ig-post-icon">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+            Instagram
+          </div>
+        </div>`;
+      div.onclick = () => window.open(post.url || igUrl, '_blank');
+      grid.appendChild(div);
+    });
+  }
+})();
+
+// Galerie rendern
+(function(){
+  const grid = document.getElementById('galGrid');
+  const fallbacks = [
+    {ico:'🎨', lbl:'Lackierung Komplett'},
+    {ico:'🔧', lbl:'Smart Repair'},
+    {ico:'🚗', lbl:'Unfall Vorher'},
+    {ico:'✨', lbl:'Unfall Nachher'},
+    {ico:'🏆', lbl:'Karosserie'},
+    {ico:'📸', lbl:'Weitere Arbeit'},
+  ];
+  const items = GALLERY_IMAGES.length > 0 ? GALLERY_IMAGES : null;
+  const count = items ? Math.min(items.length, 7) : 5;
+  let lbIdx = 0;
+  const lbImages = items || [];
+
+  for (let i = 0; i < count; i++){
+    const div = document.createElement('div');
+    div.className = 'gal-item';
+    if (items && items[i]){
+      div.innerHTML = `<img src="${items[i].src}" alt="${items[i].caption||''}">`;
+      div.onclick = (()=>{const idx=i; return ()=>openLightbox(idx);})();
+    } else {
+      const fb = fallbacks[i] || fallbacks[0];
+      div.innerHTML = `<div class="gal-ph"><div class="gal-ico">${fb.ico}</div><div class="gal-lbl">${fb.lbl}</div></div>`;
+    }
+    grid.appendChild(div);
+  }
+
+  window.openLightbox = function(idx){
+    if (!lbImages.length) return;
+    lbIdx = idx;
+    document.getElementById('galLbImg').src = lbImages[idx].src;
+    document.getElementById('galLbCaption').textContent = lbImages[idx].caption || '';
+    document.getElementById('galLightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  window.closeLightbox = function(){
+    document.getElementById('galLightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  window.lbNav = function(dir){
+    lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
+    document.getElementById('galLbImg').src = lbImages[lbIdx].src;
+    document.getElementById('galLbCaption').textContent = lbImages[lbIdx].caption || '';
+  };
+  document.addEventListener('keydown', e=>{
+    if (document.getElementById('galLightbox').classList.contains('open')){
+      if (e.key==='Escape') closeLightbox();
+      if (e.key==='ArrowLeft') lbNav(-1);
+      if (e.key==='ArrowRight') lbNav(1);
+    }
+  });
+})();
+
+// Sponsoren rendern
+(function(){
+  const container = document.getElementById('sponsorLogos');
+  SPONSORS.forEach(s => {
+    const div = document.createElement('div');
+    if (s.logo){
+      div.className = 'plogo-img';
+      div.innerHTML = `<img src="${s.logo}" alt="${s.name}" title="${s.name}">`;
+    } else {
+      div.className = 'plogo';
+      div.textContent = s.name;
+    }
+    container.appendChild(div);
+  });
+})();
 </script>
 </body>
 </html>
